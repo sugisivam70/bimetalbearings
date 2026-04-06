@@ -20,10 +20,10 @@
       :root {
         --text-main: #162534;
         --text-muted: #566779;
-        --accent: #1e5f91;
-        --accent-soft: #2b6cb0;
+        --accent: #007bff;
+        --accent-soft: #1e73e8;
         --surface: #ffffff;
-        --surface-soft: #f8fbfe;
+        --surface-soft: #f4f9ff;
         --border: #e4edf5;
       }
 
@@ -38,7 +38,7 @@
         background:
           radial-gradient(circle at 12% 18%, rgba(43, 108, 176, 0.14), transparent 38%),
           radial-gradient(circle at 86% 14%, rgba(94, 170, 245, 0.16), transparent 42%),
-          #f6fafe;
+          #f2f8ff;
       }
 
       .service-hero-content {
@@ -68,7 +68,7 @@
         font-size: clamp(2.3rem, 5vw, 4.4rem);
         line-height: 1.05;
         letter-spacing: -0.02em;
-        color: #0f2534;
+        color: #0f67f4;
       }
 
       .precision-intro {
@@ -102,8 +102,8 @@
 
       .view-precision-btn:hover {
         transform: translateY(-2px);
-        background: #174e78;
-        box-shadow: 0 10px 20px rgba(16, 40, 62, 0.2);
+        background: #1e73e8;
+        box-shadow: 0 10px 20px rgba(30, 115, 232, 0.28);
       }
 
       .services,
@@ -203,7 +203,7 @@
         display: inline-block;
         padding: 6px 12px;
         border-radius: 999px;
-        background: #eef5fc;
+        background: #e8f2ff;
         color: var(--accent-soft);
         font-size: 0.78rem;
         font-weight: 600;
@@ -306,7 +306,7 @@
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--accent-soft);
-        background: #eef5fc;
+        background: #e8f2ff;
         font-weight: 600;
       }
 
@@ -435,9 +435,11 @@
       }
 
       .prdimg-view-more {
+        display: inline-block;
+        text-decoration: none;
         border: none;
         border-radius: 999px;
-        background: #0f2534;
+        background: #1e73e8;
         color: #ffffff;
         padding: 10px 22px;
         font-size: 0.92rem;
@@ -451,8 +453,8 @@
 
       .prdimg-view-more:hover {
         transform: translateY(-2px);
-        background: #09161f;
-        box-shadow: 0 10px 20px rgba(9, 22, 31, 0.25);
+        background: #0f67f4;
+        box-shadow: 0 10px 20px rgba(15, 103, 244, 0.3);
       }
 
       .work-articles {
@@ -483,7 +485,7 @@
         width: 100%;
         height: 170px;
         object-fit: contain;
-        background: #f7fafc;
+        background: #f2f8ff;
       }
 
       .work-tile.certificate-tile img {
@@ -505,7 +507,7 @@
         letter-spacing: 0.06em;
         text-transform: uppercase;
         border-radius: 999px;
-        background: #eef5fc;
+        background: #e8f2ff;
         color: var(--accent-soft);
         padding: 4px 8px;
         font-weight: 600;
@@ -828,8 +830,8 @@
       <div class="prdimg-header">
         <h2>View Our <span>Precision</span></h2>
         <p>
-          A quick look at our machined component output. First 9 images are
-          shown by default in 3 rows, then you can view more.
+          A quick look at our machined component output. 9 images are shown
+          here in 3 rows. Click View More to open the full gallery page.
         </p>
       </div>
 
@@ -861,31 +863,12 @@
         <article class="prdimg-card">
           <img src="img/prd/IMG_20260402_115220.jpg" alt="Precision part 9" />
         </article>
-
-        <article class="prdimg-card extra">
-          <img src="img/prd/IMG_20260402_115241.jpg" alt="Precision part 10" />
-        </article>
-        <article class="prdimg-card extra">
-          <img src="img/prd/IMG_20260402_115306.jpg" alt="Precision part 11" />
-        </article>
-        <article class="prdimg-card extra">
-          <img src="img/prd/IMG_20260402_115330.jpg" alt="Precision part 12" />
-        </article>
-        <article class="prdimg-card extra">
-          <img src="img/prd/IMG_20260402_115353_1.jpg" alt="Precision part 13" />
-        </article>
-        <article class="prdimg-card extra">
-          <img src="img/prd/IMG_20260402_115600.jpg" alt="Precision part 14" />
-        </article>
-        <article class="prdimg-card extra">
-          <img src="img/prd/IMG_20260402_115633.jpg" alt="Precision part 15" />
-        </article>
       </div>
 
       <div class="prdimg-actions">
-        <button type="button" id="prdimg-view-more" class="prdimg-view-more">
+        <a href="precision-gallery.html" class="prdimg-view-more">
           View More
-        </button>
+        </a>
       </div>
     </section>
 
@@ -1025,18 +1008,6 @@
         revealNodes.forEach(function (node) {
           observer.observe(node);
         });
-
-        const viewMoreBtn = document.getElementById("prdimg-view-more");
-        if (viewMoreBtn) {
-          viewMoreBtn.addEventListener("click", function () {
-            document
-              .querySelectorAll(".prdimg-card.extra")
-              .forEach(function (card) {
-                card.classList.remove("extra");
-              });
-            viewMoreBtn.style.display = "none";
-          });
-        }
       });
     </script>
   </body>
