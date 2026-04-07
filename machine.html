@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bimetal Machines</title>
+    <link rel="icon" href="img/logo.png" />
+
+    <link rel="stylesheet" href="style.css?v=2" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --text-main: #162534;
+        --text-muted: #566779;
+        --accent: #007bff;
+        --accent-soft: #1e73e8;
+        --accent-deep: #0f67f4;
+        --surface: #ffffff;
+        --surface-soft: #f4f9ff;
+        --surface-tag: #e8f2ff;
+        --border: #dce8f8;
+      }
+
+      body {
+        font-family: "Inter", "Poppins", sans-serif;
+        color: var(--text-main);
+        background: #ffffff;
+      }
+
+      .machine-hero {
+        padding: 118px 24px 64px;
+        background:
+          radial-gradient(circle at 12% 18%, rgba(43, 108, 176, 0.14), transparent 38%),
+          radial-gradient(circle at 86% 14%, rgba(94, 170, 245, 0.16), transparent 42%),
+          #f2f8ff;
+      }
+
+      .machine-hero-content {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 38px 34px;
+        border-radius: 26px;
+        border: 1px solid rgba(20, 52, 74, 0.1);
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 18px 46px rgba(16, 34, 52, 0.08);
+      }
+
+      .machine-hero-content h2 {
+        margin: 0;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        font-weight: 500;
+        line-height: 1.22;
+      }
+
+      .machine-hero-content h2 span {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .bg-text {
+        margin: 10px 0 0;
+        font-size: clamp(2.3rem, 5vw, 4.4rem);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        color: var(--accent-deep);
+      }
+
+      .machine-intro {
+        margin-top: 14px;
+        max-width: 820px;
+        color: var(--text-muted);
+        font-size: 0.98rem;
+        line-height: 1.75;
+      }
+
+      .machine-meta {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .meta-card {
+        border: 1px solid var(--border);
+        background: var(--surface);
+        border-radius: 12px;
+        padding: 12px 14px;
+      }
+
+      .meta-card .label {
+        display: block;
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent-soft);
+        font-weight: 600;
+      }
+
+      .meta-card .value {
+        display: block;
+        margin-top: 4px;
+        font-size: 1.02rem;
+        font-weight: 700;
+        color: var(--text-main);
+      }
+
+      .machines-section {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 48px 20px 30px;
+      }
+
+      .machines-head {
+        text-align: center;
+        margin-bottom: 1.3rem;
+      }
+
+      .machines-tag {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: var(--surface-tag);
+        color: var(--accent-soft);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .machines-head h2 {
+        margin: 0.85rem 0 0;
+        font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+        line-height: 1.2;
+      }
+
+      .machines-head p {
+        max-width: 820px;
+        margin: 0.75rem auto 0;
+        color: var(--text-muted);
+        line-height: 1.75;
+      }
+
+      .doc-meta {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .doc-chip {
+        background: var(--surface-tag);
+        color: var(--accent-soft);
+        border: 1px solid #d5e6ff;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 0.76rem;
+        font-weight: 600;
+      }
+
+      .machine-table-wrap {
+        margin-top: 1.1rem;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: auto;
+        box-shadow: 0 10px 24px rgba(15, 32, 45, 0.06);
+      }
+
+      .machine-table {
+        width: 100%;
+        min-width: 860px;
+        border-collapse: collapse;
+      }
+
+      .machine-table th,
+      .machine-table td {
+        border-bottom: 1px solid #e8eff9;
+        border-right: 1px solid #edf3fb;
+        padding: 12px 12px;
+        text-align: left;
+        font-size: 0.9rem;
+      }
+
+      .machine-table th:last-child,
+      .machine-table td:last-child {
+        border-right: none;
+      }
+
+      .machine-table th {
+        background: linear-gradient(180deg, #1e73e8 0%, #0f67f4 100%);
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+
+      .machine-table tbody tr:nth-child(even) {
+        background: #f8fbff;
+      }
+
+      .machine-table tbody tr:hover {
+        background: #edf5ff;
+      }
+
+      .machine-details-section {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 18px 20px 26px;
+      }
+
+      .details-head {
+        text-align: center;
+        margin-bottom: 14px;
+      }
+
+      .details-head h3 {
+        margin: 0;
+        font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+      }
+
+      .details-head p {
+        margin: 0.55rem auto 0;
+        color: var(--text-muted);
+        max-width: 760px;
+      }
+
+      .machine-details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .machine-detail-card {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: #ffffff;
+        box-shadow: 0 8px 18px rgba(15, 32, 45, 0.05);
+        padding: 14px 14px 12px;
+      }
+
+      .detail-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .machine-no {
+        display: inline-block;
+        background: var(--surface-tag);
+        color: var(--accent-soft);
+        border-radius: 999px;
+        padding: 4px 9px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+      }
+
+      .operation-pill {
+        display: inline-block;
+        background: #eef5ff;
+        color: var(--accent-deep);
+        border: 1px solid #d9e8ff;
+        border-radius: 999px;
+        padding: 4px 8px;
+        font-size: 0.72rem;
+        font-weight: 600;
+      }
+
+      .machine-detail-card h4 {
+        margin: 0.6rem 0 0.45rem;
+        font-size: 1rem;
+        line-height: 1.35;
+      }
+
+      .detail-image {
+        margin: 0 0 0.65rem;
+        border: 1px solid #e8eff9;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #f2f8ff;
+      }
+
+      .detail-image img {
+        width: 100%;
+        height: 230px;
+        object-fit: contain;
+        background: #ffffff;
+        padding: 8px;
+        display: block;
+      }
+
+      .detail-desc {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.88rem;
+        line-height: 1.6;
+      }
+
+      .detail-specs {
+        margin-top: 0.72rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .detail-spec {
+        border: 1px solid #e7eef9;
+        border-radius: 10px;
+        background: #fbfdff;
+        padding: 8px 9px;
+      }
+
+      .detail-spec strong {
+        display: block;
+        color: var(--accent-soft);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .detail-spec span {
+        display: block;
+        margin-top: 2px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .machine-gallery {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 22px 20px 72px;
+      }
+
+      .gallery-head {
+        text-align: center;
+        margin-bottom: 16px;
+      }
+
+      .gallery-head h3 {
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        margin: 0;
+        color: var(--text-main);
+      }
+
+      .gallery-head p {
+        margin: 0.6rem 0 0;
+        color: var(--text-muted);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .gallery-card {
+        margin: 0;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow: 0 8px 20px rgba(15, 32, 45, 0.06);
+      }
+
+      .gallery-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .gallery-card figcaption {
+        padding: 10px 12px 12px;
+        font-size: 0.88rem;
+        color: var(--text-muted);
+      }
+
+      .cta-box {
+        max-width: 1120px;
+        margin: 0 auto 70px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: linear-gradient(135deg, #f7fbff 0%, #eef5ff 100%);
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .cta-copy h4 {
+        margin: 0;
+        font-size: 1.15rem;
+      }
+
+      .cta-copy p {
+        margin: 0.45rem 0 0;
+        color: var(--text-muted);
+        font-size: 0.92rem;
+      }
+
+      .cta-btn {
+        text-decoration: none;
+        background: var(--accent-soft);
+        color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border-radius: 999px;
+        padding: 10px 16px;
+        white-space: nowrap;
+      }
+
+      .cta-btn:hover {
+        background: var(--accent-deep);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 900px) {
+        .machine-meta {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .cta-box {
+          margin: 0 14px 60px;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+      }
+
+      @media (max-width: 768px) {
+        .machine-hero {
+          padding: 96px 14px 48px;
+        }
+
+        .machine-hero-content {
+          padding: 24px 18px;
+          border-radius: 18px;
+        }
+
+        .machines-section,
+        .machine-gallery {
+          padding-left: 14px;
+          padding-right: 14px;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .machine-details-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <img src="img/logo.png" alt="Bimetal Bearings logo" />
+        <div class="brand-copy">
+          <span class="brand-name">Bimetal Bearings</span>
+          <span class="brand-sub">Precision Machining Partner</span>
+        </div>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-links">
+        <a href="index.html#service">Services</a>
+        <a href="index.html#project">Projects</a>
+        <a href="index.html#process">Process</a>
+        <a href="precision.html">Precision</a>
+        <a href="machine.html">Our Machines</a>
+        <a href="contact.html">Contact</a>
+        <a
+          href="https://wa.me/919008835175?text=Hi%20Bimetal%20Bearings!%20I%20am%20interested%20in%20your%20manufacturing%20solutions.%20Please%20share%20more%20details."
+          target="_blank"
+          rel="noopener"
+          class="btn-yellow"
+          >Enquiry ➜</a
+        >
+      </nav>
+    </header>
+
+    <section class="machine-hero reveal" id="machines">
+      <div class="machine-hero-content">
+        <h2>Our <span>Machine Infrastructure</span></h2>
+        <h1 class="bg-text">Machines</h1>
+        <p class="machine-intro">
+          Bimetal Bearings operates a practical mix of boring, milling,
+          wire-cutting, turning, welding, and support equipment to execute
+          drawing-based machining with repeatable quality and dependable
+          delivery.
+        </p>
+        <div class="machine-meta">
+          <div class="meta-card">
+            <span class="label">Total Machines Listed</span>
+            <span class="value">11 Units</span>
+          </div>
+          <div class="meta-card">
+            <span class="label">Core Operations</span>
+            <span class="value">Boring, Milling, Turning, Welding</span>
+          </div>
+          <div class="meta-card">
+            <span class="label">Reference Standard</span>
+            <span class="value">ISO 9001:2015 Process-Oriented Setup</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="machines-section reveal">
+      <div class="machines-head">
+        <span class="machines-tag">Master List</span>
+        <h2>Bimetal Machine List</h2>
+        <p>
+          Updated machinery details based on internal master-list reference for
+          capability planning and production allocation.
+        </p>
+        <div class="doc-meta">
+          <span class="doc-chip">Doc No: BMB/7.1.3/F01</span>
+          <span class="doc-chip">Rev No: 00</span>
+          <span class="doc-chip">Rev Date: 05.01.2026</span>
+        </div>
+      </div>
+
+      <div class="machine-table-wrap">
+        <table class="machine-table" aria-label="Bimetal machine list">
+          <thead>
+            <tr>
+              <th>Machine No</th>
+              <th>Machine Name</th>
+              <th>Operation</th>
+              <th>Make</th>
+              <th>Range / Capacity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>BMB/HBM/01</td>
+              <td>H-BORING MACHINE</td>
+              <td>BORING</td>
+              <td>WOTAN</td>
+              <td>1000X900</td>
+            </tr>
+            <tr>
+              <td>BMB/HBM/02</td>
+              <td>H-BORING MACHINE</td>
+              <td>BORING</td>
+              <td>COLLET</td>
+              <td>800X800</td>
+            </tr>
+            <tr>
+              <td>BMB/VMC/01</td>
+              <td>VMC MILLING MACHINE</td>
+              <td>MILLING</td>
+              <td>MITSU SEKI</td>
+              <td>750X400</td>
+            </tr>
+            <tr>
+              <td>BMB/VMC/02</td>
+              <td>VMC MILLING MACHINE</td>
+              <td>MILLING</td>
+              <td>HASS</td>
+              <td>450X300</td>
+            </tr>
+            <tr>
+              <td>BMB/WCM/01</td>
+              <td>WIRE CUTTING MACHINE</td>
+              <td>CUTTING</td>
+              <td>CONCORD</td>
+              <td>400X320X500</td>
+            </tr>
+            <tr>
+              <td>BMB/DRO/01</td>
+              <td>DRO MILLING MACHINE</td>
+              <td>MILLING</td>
+              <td>ESTILO</td>
+              <td>1000X400</td>
+            </tr>
+            <tr>
+              <td>BMB/LM/01</td>
+              <td>LATHE MACHINE</td>
+              <td>TURNING</td>
+              <td>BALAJI</td>
+              <td>500MM</td>
+            </tr>
+            <tr>
+              <td>BMB/LM/02</td>
+              <td>LATHE MACHINE</td>
+              <td>TURNING</td>
+              <td>MINAR</td>
+              <td>680MM</td>
+            </tr>
+            <tr>
+              <td>BMB/TWM/01</td>
+              <td>TIG WELDING MACHINE</td>
+              <td>WELDING</td>
+              <td>WOODPECKER</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td>BMB/AC/01</td>
+              <td>AIR COMPRESSOR</td>
+              <td>AIR SUPPLY</td>
+              <td>BOSCH</td>
+              <td>5HP</td>
+            </tr>
+            <tr>
+              <td>BMB/BG/01</td>
+              <td>BENCH GRINDING</td>
+              <td>GRINDING</td>
+              <td>BOSCH</td>
+              <td>0.5HP</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="machine-details-section reveal" id="machine-descriptions">
+      <div class="details-head">
+        <h3>Machine-wise Separate Description</h3>
+        <p>
+          Each machine is listed separately below with its role, make, and
+          capacity for clearer capability understanding.
+        </p>
+      </div>
+
+      <div class="machine-details-grid">
+        <article class="machine-detail-card">
+          <div class="detail-top">
+            <span class="machine-no">BMB/HBM/01</span>
+            <span class="operation-pill">BORING</span>
+          </div>
+          <h4>H-BORING MACHINE</h4>
+          <figure class="detail-image">
+            <img
+              src="https://content.jdmagicbox.com/quickquotes/images_main/high-performance-wotan-horizontal-boring-machine-for-heavy-engineering-803369948-ut3n57ua.jpg?impolicy=queryparam&im=Resize=(360,360),aspect=fit"
+              alt="WOTAN H-Boring Machine"
+              loading="lazy"
+            />
+          </figure>
+          <p class="detail-desc">
+            WOTAN horizontal boring setup for heavy engineering components
+            requiring stable alignment and accurate boring depth control.
+          </p>
+          <div class="detail-specs">
+            <div class="detail-spec"><strong>Make</strong><span>WOTAN</span></div>
+            <div class="detail-spec">
+              <strong>Range</strong><span>1000X900</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="machine-detail-card">
+          <div class="detail-top">
+            <span class="machine-no">BMB/HBM/02</span>
+            <span class="operation-pill">BORING</span>
+          </div>
+          <h4>H-BORING MACHINE</h4>
+          <figure class="detail-image">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcZo3EjcbMthnXjYCl-VAiy0dl-NmX63t7vA&s"
+              alt="COLLET H-Boring Machine"
+              loading="lazy"
+            />
+          </figure>
+          <p class="detail-desc">
+            COLLET make boring machine used for secondary boring jobs and
+            medium-size precision housings.
+          </p>
+          <div class="detail-specs">
+            <div class="detail-spec"><strong>Make</strong><span>COLLET</span></div>
+            <div class="detail-spec"><strong>Range</strong><span>800X800</span></div>
+          </div>
+        </article>
+
+        <article class="machine-detail-card">
+          <div class="detail-top">
+            <span class="machine-no">BMB/VMC/01</span>
+            <span class="operation-pill">MILLING</span>
+          </div>
+          <h4>VMC MILLING MACHINE</h4>
+          <figure class="detail-image">
+            <img
+              src="https://images.unsplash.com/photo-1740209475472-aa7d280f7452?auto=format&fit=crop&w=900&q=80"
+              alt="VMC milling machine"
+              loading="lazy"
+            />
+          </figure>
+          <p class="detail-desc">
+            MITSU SEKI VMC for precision face milling, slotting, drilling, and
+            profile jobs with repeatable dimensional control.
+          </p>
+          <div class="detail-specs">
+            <div class="detail-spec">
+              <strong>Make</strong><span>MITSU SEKI</span>
+            </div>
+            <div class="detail-spec"><strong>Range</strong><span>750X400</span></div>
+          </div>
+        </article>
+
+        <article class="machine-detail-card">
+          <div class="detail-top">
+            <span class="machine-no">BMB/VMC/02</span>
+            <span class="operation-pill">MILLING</span>
+          </div>
+          <h4>VMC MILLING MACHINE</h4>
+          <figure class="detail-image">
+            <img
+              src="https://images.unsplash.com/photo-1738162837438-92ff852619a1?auto=format&fit=crop&w=900&q=80"
+              alt="VMC milling operation"
+              loading="lazy"
+            />
+          </figure>
+          <p class="detail-desc">
+            HASS VMC for fast setup-to-production milling and drilling with
+            consistent output in batch components.
+          </p>
+          <div class="detail-specs">
+            <div class="detail-spec"><strong>Make</strong><span>HASS</span></div>
+            <div class="detail-spec"><strong>Range</strong><span>450X300</span></div>
+          </div>
+        </article>
+
+        <article class="machine-detail-card">
+          <div class="detail-top">
+            <span class="machine-no">BMB/WCM/01</span>
+            <span class="operation-pill">CUTTING</span>
+          </div>
+          <h4>WIRE CUTTING MACHINE</h4>
+          <figure class="detail-image">
+            <img
+              src="https://images.unsplash.com/photo-1666618090858-fbcee636bd3e?auto=format&fit=crop&w=900&q=80"
+              alt="Wire cutting machine"
+              loading="lazy"
+            />
+          </figure>
+          <p class="detail-desc">
+            CONCORD wire cutting machine for profile cutting and contour-based
+            precision geometry.
+          </p>
+          <div class="detail-specs">
+            <div class="detail-spec">
+              <strong>Make</strong><span>CONCORD</span>
+            </div>
+            <div class="detail-spec">
+              <strong>Range</strong><span>400X320X500</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="machine-detail-card">
+          <div class="detail-top">
+            <span class="machine-no">BMB/DRO/01</span>
+            <span class="operation-pill">MILLING</span>
+          </div>
+          <h4>DRO MILLING MACHINE</h4>
+          <figure class="detail-image">
+            <img
+              src="https://images.unsplash.com/photo-1738162837330-9257f938463c?auto=format&fit=crop&w=900&q=80"
+              alt="DRO milling machine"
+              loading="lazy"
+            />
+          </figure>
+          <p class="detail-desc">
+            ESTILO DRO milling machine for manual precision operations, toolroom
+            tasks, and fixture-related machining support.
+          </p>
+          <div class="detail-specs">
+            <div class="detail-spec"><strong>Make</strong><span>ESTILO</span></div>
+            <div class="detail-spec">
+              <strong>Range</strong><span>1000X400</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="machine-detail-card">
+          <div class="detail-top">
+            <span class="machine-no">BMB/LM/01</span>
+            <span class="operation-pill">TURNING</span>
+          </div>
+          <h4>LATHE MACHINE</h4>
+          <figure class="detail-image">
+            <img
+              src="https://images.unsplash.com/photo-1716191300020-b52dec5b70a8?auto=format&fit=crop&w=900&q=80"
+              alt="Lathe turning machine"
+              loading="lazy"
+            />
+          </figure>
+          <p class="detail-desc">
+            BALAJI lathe for cylindrical turning operations and shaft-type
+            component machining.
+          </p>
+          <div class="detail-specs">
+            <div class="detail-spec"><strong>Make</strong><span>BALAJI</span></div>
+            <div class="detail-spec"><strong>Capacity</strong><span>500MM</span></div>
+          </div>
+        </article>
+
+        <article class="machine-detail-card">
+          <div class="detail-top">
+            <span class="machine-no">BMB/LM/02</span>
+            <span class="operation-pill">TURNING</span>
+          </div>
+          <h4>LATHE MACHINE</h4>
+          <figure class="detail-image">
+            <img
+              src="https://images.unsplash.com/photo-1689960253768-72a12bc8320f?auto=format&fit=crop&w=900&q=80"
+              alt="Lathe machining setup"
+              loading="lazy"
+            />
+          </figure>
+          <p class="detail-desc">
+            MINAR lathe for medium-length turning work with controlled
+            concentricity and finish.
+          </p>
+          <div class="detail-specs">
+            <div class="detail-spec"><strong>Make</strong><span>MINAR</span></div>
+            <div class="detail-spec"><strong>Capacity</strong><span>680MM</span></div>
+          </div>
+        </article>
+
+        <article class="machine-detail-card">
+          <div class="detail-top">
+            <span class="machine-no">BMB/TWM/01</span>
+            <span class="operation-pill">WELDING</span>
+          </div>
+          <h4>TIG WELDING MACHINE</h4>
+          <figure class="detail-image">
+            <img
+              src="https://images.unsplash.com/photo-1764114441123-586d13fc6ece?auto=format&fit=crop&w=900&q=80"
+              alt="TIG welding machine"
+              loading="lazy"
+            />
+          </figure>
+          <p class="detail-desc">
+            WOODPECKER TIG welding setup for clean weld seams and fabrication
+            support in component assemblies.
+          </p>
+          <div class="detail-specs">
+            <div class="detail-spec">
+              <strong>Make</strong><span>WOODPECKER</span>
+            </div>
+            <div class="detail-spec"><strong>Capacity</strong><span>-</span></div>
+          </div>
+        </article>
+
+        <article class="machine-detail-card">
+          <div class="detail-top">
+            <span class="machine-no">BMB/AC/01</span>
+            <span class="operation-pill">AIR SUPPLY</span>
+          </div>
+          <h4>AIR COMPRESSOR</h4>
+          <figure class="detail-image">
+            <img
+              src="https://images.unsplash.com/photo-1738162837389-3b02d6dd507b?auto=format&fit=crop&w=900&q=80"
+              alt="Air compressor support"
+              loading="lazy"
+            />
+          </figure>
+          <p class="detail-desc">
+            BOSCH compressor supporting pneumatic machine operations and shop
+            floor utility air requirements.
+          </p>
+          <div class="detail-specs">
+            <div class="detail-spec"><strong>Make</strong><span>BOSCH</span></div>
+            <div class="detail-spec"><strong>Capacity</strong><span>5HP</span></div>
+          </div>
+        </article>
+
+        <article class="machine-detail-card">
+          <div class="detail-top">
+            <span class="machine-no">BMB/BG/01</span>
+            <span class="operation-pill">GRINDING</span>
+          </div>
+          <h4>BENCH GRINDING</h4>
+          <figure class="detail-image">
+            <img
+              src="https://images.unsplash.com/photo-1738162837619-5d0b158abcec?auto=format&fit=crop&w=900&q=80"
+              alt="Bench grinding machine"
+              loading="lazy"
+            />
+          </figure>
+          <p class="detail-desc">
+            BOSCH bench grinding setup for edge preparation, deburring, and tool
+            touch-up support.
+          </p>
+          <div class="detail-specs">
+            <div class="detail-spec"><strong>Make</strong><span>BOSCH</span></div>
+            <div class="detail-spec"><strong>Capacity</strong><span>0.5HP</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+    <section class="cta-box reveal">
+      <div class="cta-copy">
+        <h4>Need machine-wise feasibility for your part?</h4>
+        <p>
+          Share drawing details and quantity. We will map operation sequence and
+          suggest the best-fit machine route.
+        </p>
+      </div>
+      <a
+        class="cta-btn"
+        href="https://wa.me/919008835175?text=Hi%20Bimetal%20Bearings!%20Please%20review%20our%20part%20drawing%20and%20share%20machine-wise%20feasibility."
+        target="_blank"
+        rel="noopener"
+        >Request Feasibility</a
+      >
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <img src="img/logo.png" alt="Bimetal Bearings Logo" class="logo" />
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Menu</h4>
+          <ul>
+            <li><a href="machine.html">VMC Milling & Drilling</a></li>
+            <li><a href="index.html#service">VMC Drilling</a></li>
+            <li><a href="index.html">About Us</a></li>
+            <li><a href="contact.html">Get a Quote</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html">FAQs</a></li>
+            <li><a href="contact.html">Quality Policy</a></li>
+            <li><a href="contact.html">Certifications</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="#" title="Facebook" target="_blank" rel="noopener">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" title="Instagram" target="_blank" rel="noopener">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://wa.me/919008835175?text=Hi%20Bimetal%20Bearings!%20I%20am%20interested%20in%20your%20manufacturing%20solutions.%20Please%20share%20more%20details."
+              target="_blank"
+              rel="noopener"
+              title="WhatsApp"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-contact">
+          <p>
+            <a
+              href="https://www.google.com/maps?q=Sy.+No.+52/3A,+Site+No.+384,+1st+Cross,+Thigalarapalya+Main+Road,+Karihobanahalli,+Near+Peenya+2nd+Stage,+Bangalore+560058"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fas fa-map-marker-alt"></i>
+              Sy. No. 52/3A, Site No. 384, 1st Cross, Thigalarapalya Main Road,
+              Karihobanahalli, Near Peenya 2nd Stage, Bangalore - 560 058
+            </a>
+          </p>
+
+          <p>
+            <a
+              href="https://www.bimetalbearings.in"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fas fa-globe"></i> www.bimetalbearings.in
+            </a>
+          </p>
+
+          <p>
+            <a href="tel:+9008835175">
+              <i class="fas fa-phone-alt"></i> +91 9008835175
+            </a>
+          </p>
+
+          <p>
+            <a href="tel:08028365175">
+              <i class="fas fa-phone-alt"></i> 080 - 28365175
+            </a>
+          </p>
+
+          <p>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=bimetalbearings@gmail.com"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fas fa-envelope"></i> bimetalbearings@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© Copyright 2025. Bimetal Bearings. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        if (menuToggle && navLinks) {
+          menuToggle.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            navLinks.classList.toggle("active");
+          });
+
+          document.addEventListener("click", function (event) {
+            if (
+              !menuToggle.contains(event.target) &&
+              !navLinks.contains(event.target)
+            ) {
+              navLinks.classList.remove("active");
+            }
+          });
+        }
+
+        const revealNodes = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(
+          function (entries, revealObserver) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+        );
+
+        revealNodes.forEach(function (node) {
+          observer.observe(node);
+        });
+      });
+    </script>
+  </body>
+</html>
