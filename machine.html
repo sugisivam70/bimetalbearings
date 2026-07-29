@@ -33,6 +33,7 @@
         font-family: "Inter", "Poppins", sans-serif;
         color: var(--text-main);
         background: #ffffff;
+        overflow-x: clip;
       }
 
       .machine-hero {
@@ -427,8 +428,10 @@
       }
 
       .reveal {
-        opacity: 0;
-        transform: translateY(20px);
+        /* Content must remain readable when a browser does not support the
+           optional scroll-animation API (common in embedded mobile browsers). */
+        opacity: 1;
+        transform: none;
         transition: opacity 0.5s ease, transform 0.5s ease;
       }
 
@@ -476,6 +479,28 @@
 
         .machine-details-grid {
           grid-template-columns: 1fr;
+        }
+
+        .detail-image img {
+          height: 200px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .machine-hero-content {
+          padding: 20px 14px;
+        }
+
+        .detail-specs {
+          grid-template-columns: 1fr;
+        }
+
+        .detail-top {
+          flex-wrap: wrap;
+        }
+
+        .operation-pill {
+          margin-left: 0;
         }
       }
     </style>
