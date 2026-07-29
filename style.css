@@ -1222,7 +1222,7 @@ a {
 .timeline-img,
 .timeline-content {
   width: 50%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .timeline-img {
